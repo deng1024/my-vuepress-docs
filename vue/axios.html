@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Axios 二次封装 | Welcome to my blog</title>
+    <meta name="description" content="my vuepress docs">
+    <meta name="theme-color" content="#3eaf7c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <link rel="preload" href="/my-vuepress-docs/assets/css/0.styles.5a26c3a6.css" as="style"><link rel="preload" href="/my-vuepress-docs/assets/js/app.014c5bb8.js" as="script"><link rel="preload" href="/my-vuepress-docs/assets/js/2.b6b05704.js" as="script"><link rel="preload" href="/my-vuepress-docs/assets/js/13.bdeb4d4e.js" as="script"><link rel="prefetch" href="/my-vuepress-docs/assets/js/10.8548af73.js"><link rel="prefetch" href="/my-vuepress-docs/assets/js/11.bb56aabd.js"><link rel="prefetch" href="/my-vuepress-docs/assets/js/12.4559a0d6.js"><link rel="prefetch" href="/my-vuepress-docs/assets/js/14.cd0bc121.js"><link rel="prefetch" href="/my-vuepress-docs/assets/js/3.91f2ba8f.js"><link rel="prefetch" href="/my-vuepress-docs/assets/js/4.4bacd850.js"><link rel="prefetch" href="/my-vuepress-docs/assets/js/5.f38c1e4b.js"><link rel="prefetch" href="/my-vuepress-docs/assets/js/6.0e67b5b2.js"><link rel="prefetch" href="/my-vuepress-docs/assets/js/7.0116a07e.js"><link rel="prefetch" href="/my-vuepress-docs/assets/js/8.597988df.js"><link rel="prefetch" href="/my-vuepress-docs/assets/js/9.7c3d7ac7.js">
+    <link rel="stylesheet" href="/my-vuepress-docs/assets/css/0.styles.5a26c3a6.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/my-vuepress-docs/" class="home-link router-link-active"><!----> <span class="site-name">Welcome to my blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/my-vuepress-docs/vue/" class="nav-link router-link-active">Vue</a></div><div class="nav-item"><a href="https://v1.vuepress.vuejs.org/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  VuePress
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/my-vuepress-docs/vue/" class="nav-link router-link-active">Vue</a></div><div class="nav-item"><a href="https://v1.vuepress.vuejs.org/zh/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  VuePress
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Vue</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/my-vuepress-docs/vue/" class="sidebar-link">Vue</a></li><li><a href="/my-vuepress-docs/vue/axios.html" class="active sidebar-link">Axios 二次封装</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/my-vuepress-docs/vue/axios.html#简单介绍" class="sidebar-link">简单介绍</a></li><li class="sidebar-sub-header"><a href="/my-vuepress-docs/vue/axios.html#原始使用" class="sidebar-link">原始使用</a></li><li class="sidebar-sub-header"><a href="/my-vuepress-docs/vue/axios.html#发现问题" class="sidebar-link">发现问题</a></li><li class="sidebar-sub-header"><a href="/my-vuepress-docs/vue/axios.html#二次封装" class="sidebar-link">二次封装</a></li><li class="sidebar-sub-header"><a href="/my-vuepress-docs/vue/axios.html#总结" class="sidebar-link">总结</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="axios-二次封装"><a href="#axios-二次封装" class="header-anchor">#</a> Axios 二次封装</h1> <h2 id="简单介绍"><a href="#简单介绍" class="header-anchor">#</a> 简单介绍</h2> <p>axios作为一个请求库，可以说每一个vue开发者都使用过。这里不再赘述，详情可以观看<a href="https://www.kancloud.cn/yunye/axios/234845" target="_blank" rel="noopener noreferrer">文档<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p> <h2 id="原始使用"><a href="#原始使用" class="header-anchor">#</a> 原始使用</h2> <p>通常我们对axios的应用非常简单粗暴。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span><span class="token punctuation">;</span>
+<span class="token class-name">Vue</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>$http <span class="token operator">=</span> axios<span class="token punctuation">;</span>
+</code></pre></div><p>引入axios后，绑定到Vue的原型上，这样我们就可以直接通过this.$http调用axios啦。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">this</span><span class="token punctuation">.</span>$http<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">err</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="发现问题"><a href="#发现问题" class="header-anchor">#</a> 发现问题</h2> <p>一开始我也是这么愉悦地使用axios，但是后来我遇到了几个问题。</p> <ul><li>如果某个url很多地方用到，突然这个url需要换成另外一个url时，会比较麻烦，需要改很多个地方；</li> <li>在开发过程中，可能会因为后台修改了转发配置，导致整个后台接口的前缀发生改变，如“/sys1/url1”, “/sys1/url2”变成“/sys2/url1”, “/sys2/url1”；</li> <li>项目中多个接口调用时，代码不清晰。</li></ul> <p>总结起来：</p> <ol><li>接口url需要增加统一的管理</li> <li>axios使用时逻辑更好区分</li></ol> <h2 id="二次封装"><a href="#二次封装" class="header-anchor">#</a> 二次封装</h2> <p>针对以上目的，进行了axios的二次封装。
+具体代码已上传<a href="https://github.com/deng1024/my-vue-axios-servcie" target="_blank" rel="noopener noreferrer">github<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>。</p> <h3 id="结构"><a href="#结构" class="header-anchor">#</a> 结构</h3> <div class="language- extra-class"><pre class="language-text"><code>project
+|--src // 项目主要代码目录
+|  |--service // axios二次封装目录
+|  |  |--api // api统一管理目录
+|  |  |  |--module // api分模块管理
+|  |  |  | |--login.js // login模块
+|  |  |  | |--user.js // user模块
+|  |  |  |--index.js // 集成各模块输出
+|  |  |--baseUrl.js // 统一管理接口前缀
+|  |  |--request.js // axios基本配置
+|  |  |--index.js // 封装axios和api
+</code></pre></div><h3 id="api管理"><a href="#api管理" class="header-anchor">#</a> api管理</h3> <h4 id="模块分割"><a href="#模块分割" class="header-anchor">#</a> 模块分割</h4> <p>将后台提供的模块按照模块进行分割，并且结合es6的规范，在module目录下一个文件代表一个模块。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// login.js</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token keyword">in</span><span class="token operator">:</span> <span class="token string">'/login/in'</span><span class="token punctuation">,</span>
+  out<span class="token operator">:</span> <span class="token string">'/login/out'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// user.js</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  getById<span class="token operator">:</span> <span class="token punctuation">{</span> url<span class="token operator">:</span> <span class="token string">'/user/{id}'</span><span class="token punctuation">,</span> method<span class="token operator">:</span> <span class="token string">'get'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  add<span class="token operator">:</span> <span class="token string">'/user/add'</span><span class="token punctuation">,</span>
+  <span class="token keyword">delete</span><span class="token operator">:</span> <span class="token punctuation">{</span> url<span class="token operator">:</span> <span class="token string">'/user/delete'</span><span class="token punctuation">,</span> method<span class="token operator">:</span> <span class="token string">'get'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre></div><h4 id="模块集成"><a href="#模块集成" class="header-anchor">#</a> 模块集成</h4> <p>在index.js中，我们需要将我们各个模块集成到一起，暴露出去。
+采用了webpack提供的require.context方法，获取所有在module目录下的js文件，并将它们export出来的东西统合在一起。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// api/index.js</span>
+<span class="token keyword">let</span> apis <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> files <span class="token operator">=</span> require<span class="token punctuation">.</span><span class="token function">context</span><span class="token punctuation">(</span><span class="token string">'./modules'</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token regex">/\.js$/</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 第二个argument为false，不处理子目录</span>
+
+files<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">filename</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 取文件中export出来的moduleName作为模块名，如果没有moduleName则取文件名为模块名 ( login.js =&gt; login )</span>
+  <span class="token keyword">const</span> moduleName <span class="token operator">=</span> <span class="token function">files</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">.</span>moduleName <span class="token operator">||</span> <span class="token regex">/\/(\w+)\.js$/</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+  apis<span class="token punctuation">[</span>moduleName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">files</span><span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">.</span>default<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> apis<span class="token punctuation">;</span>
+</code></pre></div><p>根据上面的module下的文件内容，index.js中export出来的apis应该是这样的：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>apis <span class="token operator">=</span> <span class="token punctuation">{</span>
+  login<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token keyword">in</span><span class="token operator">:</span> <span class="token string">'/login/in'</span><span class="token punctuation">,</span>
+    out<span class="token operator">:</span> <span class="token string">'/login/out'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  user<span class="token operator">:</span> <span class="token punctuation">{</span>
+    getById<span class="token operator">:</span> <span class="token punctuation">{</span> url<span class="token operator">:</span> <span class="token string">'/user/{id}'</span><span class="token punctuation">,</span> method<span class="token operator">:</span> <span class="token string">'get'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    add<span class="token operator">:</span> <span class="token string">'/user/add'</span><span class="token punctuation">,</span>
+    <span class="token keyword">delete</span><span class="token operator">:</span> <span class="token punctuation">{</span> url<span class="token operator">:</span> <span class="token string">'/user/delete'</span><span class="token punctuation">,</span> method<span class="token operator">:</span> <span class="token string">'get'</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="baseurl"><a href="#baseurl" class="header-anchor">#</a> baseUrl</h3> <p>后台提供的接口一般会包含一个统一的前缀，是后台工程的标志。
+比如上面的login in这个登入的接口，完整的接口调用应该是 “/web/login/in”这个样子的。
+但是因为不同开发人员不同的部署习惯或者布置转发等某些情况下，这个工程的名称可能会有所变化。
+所以，这里把这个前缀提取出来做管理，不需要在改动时对所有接口进行改动。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token string">'/web'</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="基本配置"><a href="#基本配置" class="header-anchor">#</a> 基本配置</h3> <p>以上对后台提供的接口地址做了充分的处理，接下来要对axios做处理了。
+在request.js中对axios做了初始化的处理，以及拦截器的设置，这里一般是用于处理请求权限验证及返回的报错处理。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// request.js</span>
+<span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span><span class="token punctuation">;</span> <span class="token comment">// 引入axios</span>
+<span class="token keyword">import</span> baseUrl <span class="token keyword">from</span> <span class="token string">'./baseUrl'</span><span class="token punctuation">;</span> <span class="token comment">// 引入上面设置的baseUrl</span>
+
+<span class="token comment">/*
+* 初始化一个axios实例
+* 设置baseURL, 使用这个示例调用的接口都会默认加上baseURL
+* */</span>
+<span class="token keyword">let</span> request <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  baseURL<span class="token operator">:</span> baseUrl
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+* 拦截器设置
+* */</span>
+request<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token parameter">config</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 这里可以做自定义的权限处理，比如对headers或者auth的设置等...</span>
+  <span class="token keyword">return</span> config<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token parameter">err</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+request<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>response<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token parameter">response</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> response<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token parameter">err</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 这里可以做自定义的错误处理，比如跳转自定义404页面等</span>
+  <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> request<span class="token punctuation">;</span>
+</code></pre></div><p>经过上面的处理，拿到一个具有通用配置的axios实例。</p> <h3 id="接口api化处理"><a href="#接口api化处理" class="header-anchor">#</a> 接口api化处理</h3> <p>接下来对上面拿到apis的接口组合和request这个axios实例做进一步的处理。
+将原来的用法：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>axios<span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">err</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>转换成：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>service<span class="token punctuation">[</span>module<span class="token punctuation">]</span><span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// index.js</span>
+<span class="token keyword">import</span> api <span class="token keyword">from</span> <span class="token string">'./api'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> request <span class="token keyword">from</span> <span class="token string">'./request'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> service <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">/*
+* 工具函数
+* 用于给service上每个模块的每个接口创建一个调用request的方法
+* 接收apis中的每个模块的每个接口及方法，method默认为post
+* isProcess 闭包中的变量，用于控制接口的重复调用
+* */</span>
+<span class="token keyword">function</span> <span class="token function">createRequest</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> method <span class="token operator">=</span> <span class="token string">'post'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> isProcessing <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token comment">/*
+  * 返回的函数 为调用request的方法
+  * data 请求数据
+  * callback 请求返回的回调
+  * config axios的自定义配置
+  * */</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">data<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> config <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>isProcessing<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span> <span class="token comment">// 如果接口正在调用没有返回就再次被调用，直接return不做处理</span>
+    isProcessing <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// 某些接口可能需要更多额外的配置，所以在基本配置外merge传进来的额外配置</span>
+    <span class="token keyword">let</span> option <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      url<span class="token operator">:</span> url<span class="token punctuation">,</span>
+      method<span class="token operator">:</span> method<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> config<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">/*
+    * 针对不同的method，对data做不同处理
+    * post：按照axios 需要把数据放在data中
+    * get：按照axios 需要把数据放在params中，会转为 ?key1=value1&amp;key2=value2 接在url的后面
+    * get 考虑一种情况，后台有可能提供一种接口 比如现在 user中的getById: '/user/{id}'
+    *     需要直接把参数id放在url上，作为url的一部分。
+    *     这里对get函数的url作了一个正则校验，如果包含了{}字符串，则使用传进来的data对url上的{xxx}进行替换
+    * */</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>method <span class="token operator">===</span> <span class="token string">'post'</span><span class="token punctuation">)</span> option<span class="token punctuation">.</span>data <span class="token operator">=</span> data<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>method <span class="token operator">===</span> <span class="token string">'get'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token regex">/\{\w+\}/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">name</span> <span class="token operator">=&gt;</span> option<span class="token punctuation">.</span>url <span class="token operator">=</span> option<span class="token punctuation">.</span>url<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">{</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">}</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> data<span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        option<span class="token punctuation">.</span>params <span class="token operator">=</span> data<span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token comment">/*
+    * 正式调用request
+    * */</span>
+    <span class="token function">request</span><span class="token punctuation">(</span>option<span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token function">callback</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 成功返回，使用callback处理res.data</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">catch</span><span class="token punctuation">(</span><span class="token parameter">err</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 失败返回，这里获取了失败的状态码，作了自定义的message处理；使用callback处理自定义的对象： { statusCode, message }</span>
+        <span class="token keyword">const</span> code <span class="token operator">=</span> err<span class="token punctuation">.</span>response<span class="token punctuation">.</span>status<span class="token punctuation">;</span>
+        <span class="token function">callback</span><span class="token punctuation">(</span><span class="token punctuation">{</span>statusCode<span class="token operator">:</span> code<span class="token punctuation">,</span> message<span class="token operator">:</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">服务出错了：</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>code<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">！</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">finally</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        isProcessing <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// 接口调用后把状态改回false，不堵塞下次调用</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/*
+* 对api处理
+* 每个接口对应一个方法
+* */</span>
+Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>api<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">module</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> moduleReq <span class="token operator">=</span> service<span class="token punctuation">[</span>module<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>api<span class="token punctuation">[</span>module<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">name</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> apiConfig <span class="token operator">=</span> api<span class="token punctuation">[</span>module<span class="token punctuation">]</span><span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token comment">// 获取url 是一个string时默认使用post请求，是一个对象时，通过对象的method来调用对象的url</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> apiConfig <span class="token operator">===</span> <span class="token string">'string'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      moduleReq<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">createRequest</span><span class="token punctuation">(</span>apiConfig<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+      moduleReq<span class="token punctuation">[</span>name<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">createRequest</span><span class="token punctuation">(</span>apiConfig<span class="token punctuation">.</span>url<span class="token punctuation">,</span> apiConfig<span class="token punctuation">.</span>method<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> service<span class="token punctuation">;</span>
+</code></pre></div><p>输出的service的内容应该是：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code>service <span class="token operator">=</span> <span class="token punctuation">{</span>
+  login<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token keyword">in</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> config<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">out</span><span class="token punctuation">(</span><span class="token parameter">data<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> config</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+   <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  user<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token function">getById</span><span class="token punctuation">(</span><span class="token parameter">data<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> config</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token function">add</span><span class="token punctuation">(</span><span class="token parameter">data<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> config</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token keyword">delete</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> config<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="使用方法"><a href="#使用方法" class="header-anchor">#</a> 使用方法</h3> <p>在service中对axios二次封装后，要如果使用封装后的东西呢？</p> <p>在业务代码中：</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">import</span> service <span class="token keyword">from</span> <span class="token string">'../service'</span><span class="token punctuation">;</span>
+service<span class="token punctuation">.</span>login<span class="token punctuation">.</span><span class="token function">in</span><span class="token punctuation">(</span><span class="token punctuation">{</span> username<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span> password<span class="token operator">:</span> <span class="token string">''</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span> 
+  <span class="token comment">// 假设后台返回成功的状态码为 200</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>res<span class="token punctuation">.</span>statusCode <span class="token operator">===</span> <span class="token string">'200'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 成功 处理</span>
+  <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 错误处理</span>
+  <span class="token punctuation">}</span> 
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+service<span class="token punctuation">.</span>user<span class="token punctuation">.</span><span class="token function">getById</span><span class="token punctuation">(</span><span class="token punctuation">{</span> id<span class="token operator">:</span> <span class="token number">1</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">res</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token comment">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>在经过上面一系列的操作之后，我们得到了一个service对象；
+在使用service调用时，把原来的传入一个url的方式转换成了模块化的api调用方式，更直观地反映出业务代码的逻辑，而且对url的管理更加的人性化。
+具体代码可查看我的github项目<a href="https://github.com/deng1024/my-vue-axios-servcie" target="_blank" rel="noopener noreferrer">my-vue-axios-servcie<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></p></div> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/my-vuepress-docs/vue/" class="prev router-link-active">Vue</a></span> <!----></p></div> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/my-vuepress-docs/assets/js/app.014c5bb8.js" defer></script><script src="/my-vuepress-docs/assets/js/2.b6b05704.js" defer></script><script src="/my-vuepress-docs/assets/js/13.bdeb4d4e.js" defer></script>
+  </body>
+</html>
